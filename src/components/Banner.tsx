@@ -9,7 +9,10 @@ export default function Banner() {
           <p>
             Learn all about SpaceX's capsules, retired, active, and upcoming!
           </p>
-          <a className="font-['Zilla_Slab'] font-bold" href="#search">
+          <a
+            className="font-['Zilla_Slab'] font-bold text-primary-200"
+            href="#search"
+          >
             Explore {"\u2192"}
           </a>
         </div>
