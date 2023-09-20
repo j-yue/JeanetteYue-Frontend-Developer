@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 import { ApiDataType } from "../types";
-
+import { ENDPT } from "../../globalVariables";
 interface useFetchInterface {
   url?: string;
   setData: React.Dispatch<React.SetStateAction<ApiDataType[]>>;
 }
 
-export default function useFetch({
-  url = "https://api.spacexdata.com/v3/capsules",
-  setData,
-}: useFetchInterface) {
+export default function useFetch({ url = ENDPT, setData }: useFetchInterface) {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {

@@ -8,11 +8,9 @@ import { DataContext } from "./context/DataContext";
 import { PaginateContext, PaginateDimensions } from "./context/PaginateContext";
 import { ModalContext } from "./context/ModalContext";
 import Modal from "./components/Modal";
-
+import { ENDPT } from "./globalVariables";
 function App() {
-  const [url, setUrl] = useState<string>(
-    "https://api.spacexdata.com/v3/capsules"
-  );
+  const [url, setUrl] = useState<string>(ENDPT);
 
   const [data, setData] = useState<ApiDataType[]>([]);
   const [capsule, setCapsule] = useState<ApiDataType>({});

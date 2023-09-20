@@ -4,6 +4,7 @@ import { PaginateContext } from "../context/PaginateContext";
 import SearchFilters from "./SearchFilters";
 import Button from "./Button";
 import useFetch from "./hooks/useFetch";
+import { ENDPT } from "../globalVariables";
 
 interface SearchInterface {
   url: string;
@@ -35,12 +36,7 @@ export default function Search({ url, setUrl }: SearchInterface) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const selectList = formRef.current?.querySelectorAll("select");
-    setUrl(() =>
-      [
-        "https://api.spacexdata.com/v3/capsules",
-        urlParamsFromSelect(selectList),
-      ].join("?")
-    );
+    setUrl(() => [ENDPT, urlParamsFromSelect(selectList)].join(""));
     const newDimension = { currentPage: 1, count: dimensions.count };
     setDimensions(() => newDimension);
   };
