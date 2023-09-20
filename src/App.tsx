@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Banner from "./components/Banner";
 import Search from "./components/Search";
 import SearchResults from "./components/SearchResults";
@@ -6,6 +6,8 @@ import { ApiDataType } from "./components/types";
 import useFetch from "./components/hooks/useFetch";
 import { DataContext } from "./context/DataContext";
 import { PaginateContext, PaginateDimensions } from "./context/PaginateContext";
+import { ModalContext } from "./context/ModalContext";
+import Modal from "./components/Modal";
 
 function App() {
   const [url, setUrl] = useState<string>(
@@ -13,6 +15,8 @@ function App() {
   );
 
   const [data, setData] = useState<ApiDataType[]>([]);
+  const [capsule, setCapsule] = useState<ApiDataType>({});
+  const modalRef = useRef<HTMLDialogElement>({});
 
   const [dimensions, setDimensions] = useState<PaginateDimensions>({
     currentPage: 1,
@@ -21,14 +25,29 @@ function App() {
 
   useFetch({ setData: setData });
 
+  useEffect(() => {
+    //if capsule not empty object
+    if (Object.entries(capsule).length > 0) {
+      const modal = modalRef.current;
+      modal.showModal();
+    }
+  }, [capsule]);
+
   return (
     <DataContext.Provider value={{ data, setData }}>
       <PaginateContext.Provider value={{ dimensions, setDimensions }}>
-        <Banner />
-        <main>
-          <Search url={url} setUrl={setUrl} />
-          {data && <SearchResults />}
-        </main>
+        <ModalContext.Provider value={{ capsule, setCapsule }}>
+          <Banner />
+          <main>
+            <Search url={url} setUrl={setUrl} />
+            {data && <SearchResults />}
+          </main>
+          <Modal
+            capsule={capsule}
+            modalRef={modalRef}
+            setCapsule={setCapsule}
+          />
+        </ModalContext.Provider>
       </PaginateContext.Provider>
     </DataContext.Provider>
   );
