@@ -52,15 +52,18 @@ export default function Search({ url, setUrl }: SearchInterface) {
         <p>Filter capsules with following categories</p>
 
         <form
+          id="form"
           ref={formRef}
-          className="flex flex-col gap-grid py-grid"
+          className="grid grid-cols-1 gap-grid sm:grid-cols-2 lg:sm:grid-cols-3"
           onSubmit={(e) => handleSubmit(e)}
         >
           <SearchFilters />
-          <Button type="submit" variant="primary">
+        </form>
+        <div className="w-full text-center">
+          <Button type="submit" variant="primary" form="form">
             Search
           </Button>
-        </form>
+        </div>
       </section>
     </>
   );

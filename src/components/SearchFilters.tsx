@@ -7,9 +7,19 @@ export default function SearchFilters() {
 
   return (
     <>
-      <Select label="Status" propertyName="status" data={data} />
-      <Select label="Capsule Type" propertyName="type" data={data} />
-      <Select label="Landings" propertyName="landings" data={data} />
+      <Select label="Status" propertyName="status" data={data} name="Status" />
+      <Select
+        label="Capsule Type"
+        propertyName="type"
+        data={data}
+        name="Capsule Type"
+      />
+      <Select
+        label="Landings"
+        propertyName="landings"
+        data={data}
+        name="Landings"
+      />
     </>
   );
 }
