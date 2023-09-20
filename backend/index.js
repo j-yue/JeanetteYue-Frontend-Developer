@@ -5,7 +5,7 @@ const axios = require("axios");
 const cors = require("cors");
 
 const ENDPT = "https://api.spacexdata.com/v3/capsules";
-const CLIENT = "https://spacex-capsule-test.netlify.app/";
+const CLIENT = "https://spacex-capsule-test.netlify.app";
 
 const corsOptions = { origin: CLIENT };
 app.use(cors(corsOptions));
