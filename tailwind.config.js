@@ -37,6 +37,9 @@ export default {
       padding: {
         default: "var(--inner-padding)",
       },
+      spacing: {
+        grid: "var(--inner-padding)",
+      },
       screens: {
         xs: "320px",
         ...defaultTheme.screens,
