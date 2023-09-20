@@ -54,7 +54,7 @@ export default function Modal({
       ref={modalRef}
     >
       <h4 className="text-center">Details</h4>
-      <div className="h-full flex flex-col gap-grid m-grid justify-around">
+      <div className="h-full flex flex-col gap-4">
         {capsuleData.map((entry) => {
           const [property, value] = entry;
           return (
@@ -64,14 +64,15 @@ export default function Modal({
             </p>
           );
         })}
-        <form method="dialog" className="text-center">
+        <form
+          method="dialog"
+          className="w-full absolute pb-grid bottom-grid text-center"
+        >
           <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
         </form>
       </div>
-
-      {/* </Card> */}
     </dialog>
   );
 }
