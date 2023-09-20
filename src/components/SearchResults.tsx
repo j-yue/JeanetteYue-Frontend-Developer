@@ -9,7 +9,7 @@ export default function SearchResults() {
     <>
       <section className="p-default">
         <h2>Capsule Results</h2>
-        <p>{data.length} results found!</p>
+        <p className="mb-grid">{data.length} results found!</p>
 
         <PaginateContainer />
       </section>
